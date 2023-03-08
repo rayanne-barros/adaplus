@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>AdaPlus+</title>
+</head>
+<body style="margin: 10px">
+
+<section >
+    <h2>Lista de Filmes</h2>
+    <table  class="table">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Título</th>
+            <th scope="col">Gênero</th>
+            <th scope="col">Duração</th>
+            <th scope="col">Sinopse</th>
+            <th scope="col">Imdb</th>
+            <th scope="col">Imagem</th>
+            <th scope="col">Like</th>
+            <th scope="col">Dislike</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="filme : ${filmes}">
+            <td th:text="${filme.id}"></td>
+            <td th:text="${filme.titulo}"></td>
+            <td th:text="${filme.genero}"></td>
+            <td th:text="${filme.duracao}"></td>
+            <td th:text="${filme.sinopse}"></td>
+            <td th:text="${filme.imdb}"></td>
+            <td><img style="max-width: 50px" th:src="${filme.imagem}"></td>
+            <td th:text="'Likes: ' + ${filme.like} + '    ' +'Dislikes: ' + ${filme.dislike}"></td>
+
+            <td><a th:href="@{/filme/editar/{id}(id=${filme.id})}">Editar</a></td>
+            <td><a th:href="@{/filme/remover/{id}(id=${filme.id})}" onclick="return confirm('Tem certeza que deseja excluir esse filme?')">Excluir</a></td>
+        </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/filme/novo}" class="btn btn-danger" role="button">Adicionar novo filme</a>
+</section>
+
+<section >
+    <h2>Lista de Notícias</h2>
+    <table  class="table">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Título</th>
+            <th scope="col">Autor</th>
+            <th scope="col">Descrição</th>
+            <th scope="col">Imagem</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="noticia : ${noticias}">
+            <td th:text="${noticia.id}"></td>
+            <td th:text="${noticia.titulo}"></td>
+            <td th:text="${noticia.descricao}"></td>
+            <td><img style="max-width: 80px" th:src="${noticia.imagem}"></td>
+            <td th:text="${noticia.autor}"></td>
+
+            <td><a th:href="@{/noticia/editar/{id}(id=${noticia.id})}">Editar</a></td>
+            <td><a th:href="@{/noticia/remover/{id}(id=${noticia.id})}" onclick="return confirm('Tem certeza que deseja excluir essa notícia?')">Excluir</a></td>
+        </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/noticia/novo}" class="btn btn-danger" role="button">Adicionar nova notícia</a>
+</section>
+</body>
+</html>
