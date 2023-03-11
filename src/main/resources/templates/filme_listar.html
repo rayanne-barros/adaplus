@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <title>AdaPlus+</title>
+</head>
+<body style="margin: 10px">
+<h1 style="text-align: center">AdaPlus+</h1>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" th:href="@{/}">Home <span class="sr-only">(Página atual)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/filme}">| Todos os Filmes</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/noticia}">| Todas as Notícias</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<h2>Filmes</h2>
+<hr>
+
+<div class="card-deck">
+  <div class="card" th:each="filme : ${filmes}">
+    <img class="card-img-top" th:src="${filme.imagem}" alt="Imagem do filme">
+    <div class="card-body">
+      <h5 th:text="${filme.titulo}" class="card-title"></h5>
+      <p th:text="${filme.sinopse}" class="card-text"></p>
+      <p class="card-text"><small class="text-muted" th:text="${filme.duracao} + ' min.'" ></small></p>
+    </div>
+
+    <div class="card__info">
+      <div>
+        <a th:href="@{/filme/like/{id}(id=${filme.id})}" class="card__link"><i style="font-size: 16px" class="material-icons">thumb_up</i><p th:text="${filme.like}"></p></a>
+      </div>
+      <div>
+        <a th:href="@{/filme/deslike/{id}(id=${filme.id})}" class="card__link"><i style="font-size: 16px" class="material-icons">thumb_down</i><p th:text="${filme.deslike}"></p></a>
+      </div>
+      <div>
+        <a th:href="@{/filme/editar/{id}(id=${filme.id})}" class="card__link"><i style="font-size: 22px" class="material-icons">edit</i></a>
+      </div>
+      <div>
+        <a th:href="@{/filme/remover/{id}(id=${filme.id})}" class="card__link" onclick="return confirm('Tem certeza que deseja excluir esta noticia?')"><i style="font-size: 22px; color: darkred" class="material-icons">delete</i></i></a>
+      </div>
+      <div>
+        <a th:href="@{/filme/favoritar/{id}(id=${filme.id})}"><i style="font-size: 22px; color: goldenrod" class="material-icons">stars</i></a>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<nav class="navbar navbar-light bg-light">
+  <a class="nav-link" style="color: gray" th:href="@{/filme/novo}">Adicionar Filme</a>
+<!--  <a class="nav-link" style="color: gray"  th:href="@{/filme/favoritos}">Favoritos</a>-->
+</nav>
+<br>
+<br>
+</body>
+</html>

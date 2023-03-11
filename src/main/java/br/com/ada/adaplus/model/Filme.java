@@ -8,22 +8,22 @@ public class Filme {
     private String genero;
     private String duracao;
     private String sinopse;
-    private String imdb;
+   // private String imdb;
     private String imagem;
     private Integer like;
      private Integer deslike;
+     private boolean favorito = false;
 
     public Filme() {
 
     }
 
-    public Filme(Integer id, String titulo, String genero, String duracao, String sinopse, String imdb, String imagem, Integer like) {
+    public Filme(Integer id, String titulo, String genero, String duracao, String sinopse,  String imagem, Integer like) {
         this.id = id;
         this.titulo = titulo;
         this.genero = genero;
         this.duracao = duracao;
         this.sinopse = sinopse;
-        this.imdb = imdb;
         this.imagem = imagem;
         this.like = like;
     }
@@ -67,15 +67,7 @@ public class Filme {
     public void setSinopse(String sinopse) {
         this.sinopse = sinopse;
     }
-
-    public String getImdb() {
-        return imdb;
-    }
-
-    public void setImdb(String imdb) {
-        this.imdb = imdb;
-    }
-
+  
     public String getImagem() {
         return imagem;
     }
@@ -88,16 +80,23 @@ public class Filme {
         return like;
     }
 
-    public void setLike() {
-        this.like++;
+    public void setLike(Integer like) {
+        this.like = like;
     }
 
     public Integer getDeslike() {
         return deslike;
     }
 
-    public void setDeslike() {
-        this.deslike++;
+    public void setDeslike(Integer deslike) {
+        this.deslike = deslike;
     }
 
+    public boolean isFavorito() {
+        return favorito;
+    }
+
+    public void setFavorito(boolean favorito) {
+        this.favorito = favorito;
+    }
 }

@@ -10,11 +10,20 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/noticia")
 public class NoticiaController {
     @Autowired
     private NoticiaDAO noticiaDAO;
+
+    @GetMapping
+    public String listar(Model model) {
+        List<Noticia> listaNoticias = noticiaDAO.buscarTodos();
+        model.addAttribute("noticias", listaNoticias);
+        return "noticia_listar";
+    }
 
     @GetMapping("/novo")
     public String novo(Model model) {
@@ -24,7 +33,7 @@ public class NoticiaController {
     @PostMapping("/novo")
     public String adicionar(Noticia noticia) {
         noticiaDAO.adicionar(noticia);
-        return "redirect:/filme";
+        return "redirect:/";
     }
     @GetMapping("/editar/{id}")
     public String editar(@PathVariable int id, Model model) {
@@ -36,13 +45,20 @@ public class NoticiaController {
     @PostMapping("/editar")
     public String atualizar(Noticia noticia) {
         noticiaDAO.atualizar(noticia);
-        return  "redirect:/filme";
+        return  "redirect:/noticia";
+    }
+
+    @GetMapping("/buscar/{id}")
+    public String buscarNoticia(@PathVariable int id, Model model) {
+        Noticia noticia = noticiaDAO.buscarPorId(id);
+        model.addAttribute("noticia", noticia);
+        return "noticia_buscar";
     }
 
     @GetMapping("/remover/{id}")
     public String remover(@PathVariable int id) {
         noticiaDAO.remover(id);
-        return "redirect:/filme";
+        return "redirect:/noticia";
     }
 
 

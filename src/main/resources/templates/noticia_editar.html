@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Editar Notícia</title>
 </head>
-<body>
+<body style="margin: 10px">
 <h1>Deseja Editar uma Notícia?</h1>
 <form th:object="${noticia}" th:action="@{/noticia/editar}" method="post">
     <input type="hidden" th:field="*{id}">

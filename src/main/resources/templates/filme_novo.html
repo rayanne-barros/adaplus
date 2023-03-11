@@ -4,29 +4,26 @@
     <meta charset="UTF-8">
     <title>Adicionar Filme</title>
 </head>
-<body>
+<body style="margin: 10px">
 <h1>Deseja Adicionar um Filme?</h1>
 <form th:object="${filme}" method="post" th:action="@{/filme/novo}">
-    <label for="titulo">Titulo:</label>
-    <input type="text" id="titulo" name="titulo" required th:field="*{titulo}"/>
+    <label for="titulo" class="form-label">Titulo:</label>
+    <input type="text" class="form-control" style="width: 700px; margin: 10px" id="titulo" name="titulo" required th:field="*{titulo}"/>
     <br>
-    <label for="genero">Genero:</label>
-    <input type="text" id="genero" name="genero" th:field="*{genero}"/>
+    <label for="genero" class="form-label">Genero:</label>
+    <input type="text"  class="form-control" style="width: 700px; margin: 10px" id="genero" name="genero" th:field="*{genero}"/>
     <br>
-    <label for="duracao">Duração:</label>
-    <input type="text" id="duracao" name="duracao" th:field="*{duracao}"/>
+    <label for="duracao" class="form-label">Duração:</label>
+    <input type="text" class="form-control" style="width: 700px; margin: 10px" id="duracao" name="duracao" th:field="*{duracao}"/>
     <br>
-    <label for="sinopse">Sinopse:</label>
-    <input type="text" id="sinopse" name="sinopse" th:field="*{sinopse}"/>
+    <label for="sinopse" class="form-label">Sinopse:</label>
+    <input type="text" class="form-control" style="width: 700px; margin: 10px" id="sinopse" name="sinopse" th:field="*{sinopse}"/>
     <br>
-    <label for="imdb">Imdb:</label>
-    <input type="text" id="imdb" name="imdb" th:field="*{imdb}"/>
-    <br>
-    <label for="imagem">Imagem:</label>
-    <input type="text" id="imagem" name="imagem" th:field="*{imagem}"/>
+    <label for="imagem" class="form-label">Imagem:</label>
+    <input type="text"  class="form-control" style="width: 700px; margin: 10px" id="imagem" name="imagem" th:field="*{imagem}"/>
     <br>
     <button type="submit">Salvar</button>
-    <a th:href="@{/filme}">Cancelar</a>
+    <a th:href="@{/}">Cancelar</a>
 </form>
 </body>
 </html>

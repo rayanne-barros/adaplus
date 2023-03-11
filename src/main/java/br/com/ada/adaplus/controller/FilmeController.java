@@ -3,12 +3,10 @@ package br.com.ada.adaplus.controller;
 import br.com.ada.adaplus.dao.FilmeDAO;
 import br.com.ada.adaplus.model.Filme;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,11 +15,12 @@ import java.util.List;
 public class FilmeController {
     @Autowired
     private FilmeDAO filmeDAO;
+
     @GetMapping
     public String listar(Model model) {
-        List<Filme> lista = filmeDAO.buscarTodos();
-        model.addAttribute("filmes", lista);
-        return "listar";
+        List<Filme> filmes = filmeDAO.buscarTodos();
+        model.addAttribute("filmes", filmes);
+        return "filme_listar";
     }
     @GetMapping("/editar/{id}")
     public String editar(@PathVariable int id, Model model) {
@@ -47,6 +46,29 @@ public class FilmeController {
     @PostMapping("/novo")
     public String adicionar(Filme filme) {
         filmeDAO.adicionar(filme);
-        return "redirect:/filme";
+        return "redirect:/";
+    }
+
+    @GetMapping("/favoritar/{id}")
+    public String favoritar(@PathVariable int id, @RequestHeader(value = HttpHeaders.REFERER, required = false) final String referrer){
+        filmeDAO.favoritar(id);
+        return "redirect:" + referrer;
+    }
+
+    @GetMapping("/desfavoritar/{id}")
+    public String desfavoritar(@PathVariable int id, @RequestHeader(value = HttpHeaders.REFERER, required = false) final String referrer){
+        filmeDAO.desfavoritar(id);
+        return "redirect:" + referrer;
+    }
+    @GetMapping("/like/{id}")
+    public String likeFilme(@PathVariable int id, @RequestHeader(value = HttpHeaders.REFERER, required = false) final String referrer){
+        filmeDAO.like(id);
+        return "redirect:" + referrer;
+    }
+
+    @GetMapping("/dislike/{id}")
+    public String dislikeFilme (@PathVariable int id, @RequestHeader(value = HttpHeaders.REFERER, required = false) final String referrer){
+        filmeDAO.deslike(id);
+        return "redirect:" + referrer;
     }
 }
