@@ -66,9 +66,16 @@ public class FilmeController {
         return "redirect:" + referrer;
     }
 
-    @GetMapping("/dislike/{id}")
+    @GetMapping("/deslike/{id}")
     public String dislikeFilme (@PathVariable int id, @RequestHeader(value = HttpHeaders.REFERER, required = false) final String referrer){
         filmeDAO.deslike(id);
         return "redirect:" + referrer;
+    }
+
+    @GetMapping("/buscar/{id}")
+    public String buscar(@PathVariable int id, Model model) {
+        Filme filme = filmeDAO.buscarPorId(id);
+        model.addAttribute("filme", filme);
+        return "filme_buscar";
     }
 }

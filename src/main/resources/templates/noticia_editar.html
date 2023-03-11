@@ -8,20 +8,20 @@
 <h1>Deseja Editar uma Notícia?</h1>
 <form th:object="${noticia}" th:action="@{/noticia/editar}" method="post">
     <input type="hidden" th:field="*{id}">
-    <label for="titulo">Titulo:</label>
-    <input type="text" id="titulo" name="titulo" th:field="*{titulo}"/>
+    <label class="form-label" for="titulo" >Titulo:</label>
+    <input type="text" class="form-control" style="width: 700px; margin: 10px" id="titulo" name="titulo" th:field="*{titulo}"/>
     <br>
-    <label for="duracao">Autor:</label>
-    <input type="text" id="duracao" name="duracao" th:field="*{autor}"/>
+    <label class="form-label" for="duracao">Autor:</label>
+    <input type="text" class="form-control" style="width: 700px; margin: 10px" id="duracao" name="duracao" th:field="*{autor}"/>
     <br>
-    <label for="genero">Descrição:</label>
-    <input type="text" id="genero" name="genero" th:field="*{descricao}"/>
+    <label class="form-label" for="genero">Descrição:</label>
+    <input type="text" class="form-control" style="width: 700px; margin: 10px" id="genero" name="genero" th:field="*{descricao}"/>
     <br>
-    <label for="imagem">Imagem:</label>
-    <input type="text" id="imagem" name="imagem" th:field="*{imagem}"/>
+    <label class="form-label" for="imagem">Imagem:</label>
+    <input type="text" class="form-control" style="width: 700px; margin: 10px" id="imagem" name="imagem" th:field="*{imagem}"/>
     <br>
     <button type="submit">Salvar</button>
-    <a th:href="@{/filme}">Cancelar</a>
+    <a th:href="@{/noticia}">Cancelar</a>
 </form>
 </body>
 </html>

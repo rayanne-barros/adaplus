@@ -27,27 +27,36 @@
     </div>
 </nav>
 <section >
+    <br>
     <h2>Notícias</h2>
 
-    <div class="card-deck" style="width: 25rem;">
-        <div class="card" th:each="noticia : ${noticias}">
-            <img class="card-img-top" style="max-height:200px;" th:src="${noticia.imagem}" alt="Imagem da noticia">
-            <div class="card-body">
-                <h5 th:text="${noticia.titulo}" class="card-title"></h5>
-                <p class="card-text" th:text="'Descrição: ' + ${noticia.descricao}" ></p>
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item" th:text="'Autor: ' + ${noticia.autor}"></li>
-            </ul>
-            <div class="card-body" style="display: flex">
-                <a th:href="@{/noticia/editar/{id}(id=${noticia.id})}" class="card-link"><i style="font-size: 22px" class="material-icons">edit</i></a>
-                <a th:href="@{/noticia/remover/{id}(id=${noticia.id})}" class="card-link" onclick="return confirm('Tem certeza que deseja excluir esta noticia?')"><i style="font-size: 22px; color: darkred" class="material-icons">delete</i></a>
-                <a th:href="@{/noticia/buscar/{id}(id=${noticia.id})}" class="card-link"> Ver notícia</a>
-            </div>
-            </div>
-    </div>
+    <table  class="table">
+        <thead>
+        <tr>
+            <th> </th>
+            <th scope="col">Título</th>
+            <th scope="col">Descrição</th>
+            <th scope="col">Autor</th>
+            <th scope="col">Editar</th>
+            <th scope="col">Excluir</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="noticia : ${noticias}">
+            <td><img style="max-width: 130px; max-height: 200px" th:src="${noticia.imagem}" alt="Imagem da noticia"></td>
+            <td th:text="${noticia.titulo}"></td>
+            <td th:text="${noticia.descricao}"></td>
+            <td th:text="${noticia.autor}"></td>
+            <td><a th:href="@{/noticia/editar/{id}(id=${noticia.id})}"><i style="font-size: 22px" class="material-icons">edit</i></a></td>
+            <td><a th:href="@{/noticia/remover/{id}(id=${noticia.id})}" class="card-link" onclick="return confirm('Tem certeza que deseja excluir esta noticia?')"><i style="font-size: 22px; color: darkred" class="material-icons">delete</i></a></td>
+            <td><a th:href="@{/noticia/buscar/{id}(id=${noticia.id})}">Ver notícia</p></a></td>
+        </tr>
+        </tbody>
+    </table>
     <br>
     <a th:href="@{/noticia/novo}" class="btn btn-danger" role="button">Adicionar nova notícia</a>
+
 </section>
 
 </body>

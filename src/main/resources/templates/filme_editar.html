@@ -8,20 +8,20 @@
 <h1>Editar Produto</h1>
 <form th:object="${filme}" th:action="@{/filme/editar}" method="post">
 <!--    <input type="hidden" th:field="*{id}">-->
-    <label for="titulo">Titulo:</label>
-    <input type="text" id="titulo" name="titulo" th:field="*{titulo}"/>
+    <label class="form-label" for="titulo">Titulo:</label>
+    <input type="text" class="form-control" style="width: 700px; margin: 10px" id="titulo" name="titulo" th:field="*{titulo}"/>
     <br>
-    <label for="genero">Genero:</label>
-    <input type="text" id="genero" name="genero" th:field="*{genero}"/>
+    <label class="form-label" for="genero">Genero:</label>
+    <input type="text" class="form-control" style="width: 700px; margin: 10px" id="genero" name="genero" th:field="*{genero}"/>
     <br>
-    <label for="duracao">Duração:</label>
-    <input type="text" id="duracao" name="duracao" th:field="*{duracao}"/>
+    <label class="form-label" for="duracao">Duração:</label>
+    <input type="text" class="form-control" style="width: 700px; margin: 10px" id="duracao" name="duracao" th:field="*{duracao}"/>
     <br>
-    <label for="sinopse">Sinopse:</label>
-    <input type="text" id="sinopse" name="sinopse" th:field="*{sinopse}"/>
+    <label class="form-label" for="sinopse">Sinopse:</label>
+    <input type="text" class="form-control" style="width: 700px; margin: 10px" id="sinopse" name="sinopse" th:field="*{sinopse}"/>
     <br>
-    <label for="imagem">Imagem:</label>
-    <input type="text" id="imagem" name="imagem" th:field="*{imagem}"/>
+    <label class="form-label" for="imagem">Imagem:</label>
+    <input type="text" class="form-control" style="width: 700px; margin: 10px" id="imagem" name="imagem" th:field="*{imagem}"/>
     <br>
     <button type="submit">Salvar</button>
     <a th:href="@{/filme}">Cancelar</a>
